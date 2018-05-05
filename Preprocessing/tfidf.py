@@ -14,7 +14,6 @@ tf_dict = {}
 idf_dict = {}
 idf_dict_val = {}
 
-
 for f in all_file:
     a1 = f.read()
     f.close()
@@ -44,7 +43,7 @@ for f in all_file:
             tf_dict[nama_var][wrd] += 1
         else:
             tf_dict[nama_var][wrd] = 1
-
+    
     for key in tf_dict[nama_var].keys():
         if key in idf_dict.keys():
             idf_dict[key] += 1
@@ -53,4 +52,10 @@ for f in all_file:
 
     for key, val in idf_dict.items():
         idf_dict_val[key] = val/5
+print(tf_dict)
 print(idf_dict_val)
+
+# Masukin ke EXCEL
+import pandas as pd
+df_tf = pd.read_excel("hasil tf-idf.xlsx", "TF")
+print(df_tf.head())
